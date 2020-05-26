@@ -66,6 +66,12 @@ the [common](./fragments/common) subdirectory. Fragments that are specific to an
 should be placed in that architectures subdirectory, for instance the
 [x86_64](./fragments/x86_64) directory for the `x86_64` architecture.
 
+If you want to disable an entire fragment for a specific architecture, you can add the tag `# !${arch}` in the first line of the fragment. You can also exclude multiple architectures on the same line. Note the `#` at the beginning of the line, this is required to avoid that the tag is interpreted as a configuration.
+Example of valid exclusion:
+```
+# !s390x !ppc64le
+```
+
 The fragment gathering tool perfoms some basic sanity checks, and the `build-kernel.sh` will
 fail and report the error in the cases of:
 
